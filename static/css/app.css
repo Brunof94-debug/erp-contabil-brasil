@@ -5,6 +5,10 @@
   --muted: #607069;
   --line: #d9e0dc;
   --brand: #116149;
+  --brand-dark: #0b3f31;
+  --brand-soft: #e8f4ef;
+  --danger: #a51d1d;
+  --success: #116149;
 }
 
 * {
@@ -28,8 +32,14 @@ a {
   background: var(--card);
   border-bottom: 1px solid var(--line);
   display: flex;
+  gap: 20px;
   justify-content: space-between;
   padding: 18px 28px;
+}
+
+.brand-block {
+  display: grid;
+  gap: 3px;
 }
 
 .topbar nav {
@@ -58,8 +68,20 @@ a {
   padding: 36px;
 }
 
+.hero-product {
+  align-items: stretch;
+  background:
+    radial-gradient(circle at top right, rgba(17, 97, 73, 0.16), transparent 34%),
+    linear-gradient(135deg, #ffffff 0%, #f7fbf8 100%);
+  display: grid;
+  gap: 26px;
+  grid-template-columns: minmax(0, 1fr) 280px;
+}
+
 .hero h1 {
   font-size: clamp(32px, 5vw, 56px);
+  letter-spacing: -0.04em;
+  line-height: 1;
   margin: 8px 0 12px;
 }
 
@@ -76,6 +98,44 @@ a {
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.secondary-button {
+  background: var(--brand-soft);
+  color: var(--brand-dark);
+}
+
+.hero-summary {
+  align-content: center;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  display: grid;
+  gap: 12px;
+  padding: 24px;
+}
+
+.hero-summary strong {
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.status-pill {
+  background: var(--brand-soft);
+  border-radius: 999px;
+  color: var(--brand-dark);
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 8px 12px;
+  width: fit-content;
 }
 
 .grid {
@@ -100,12 +160,16 @@ a {
   margin-top: 8px;
 }
 
+.metric-card {
+  min-height: 122px;
+}
+
 .success-card {
   border-color: #6ac08f;
 }
 
 .success-card strong {
-  color: #116149;
+  color: var(--success);
 }
 
 .danger-card {
@@ -113,11 +177,52 @@ a {
 }
 
 .danger-card strong {
-  color: #a51d1d;
+  color: var(--danger);
 }
 
 .panel {
   padding: 28px;
+}
+
+.split-layout {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+}
+
+.feature-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.feature-list div {
+  background: #f8faf8;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.feature-list p {
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 6px 0 0;
+}
+
+.status-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.status-row {
+  align-items: center;
+  background: #f8faf8;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 16px;
 }
 
 .page-heading {
@@ -232,4 +337,23 @@ button {
 
 .messages {
   margin-bottom: 18px;
+}
+
+@media (max-width: 900px) {
+  .topbar,
+  .row-card,
+  .page-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .hero-product,
+  .split-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .money-columns {
+    min-width: 0;
+    text-align: left;
+  }
 }

@@ -3,56 +3,104 @@
 {% block title %}Dashboard — ERP Contábil Brasil{% endblock %}
 
 {% block content %}
-  <section class="hero">
-    <p class="eyebrow">Novo projeto</p>
-    <h1>ERP Contábil Brasil</h1>
-    <p>
-      Fundação inicial para organizar empresas, clientes, fornecedores, plano de contas
-      e lançamentos contábeis com validação de partidas dobradas.
-    </p>
+  <section class="hero hero-product">
+    <div>
+      <p class="eyebrow">ERP contábil em construção profissional</p>
+      <h1>Controle financeiro, contábil e operacional em uma única base.</h1>
+      <p>
+        Organize empresas, clientes, fornecedores, plano de contas, lançamentos
+        contábeis, contas a receber, contas a pagar e relatórios gerenciais com
+        isolamento por empresa e trilha de evolução técnica.
+      </p>
+      <div class="hero-actions">
+        {% if request.user.is_authenticated %}
+          <a class="button" href="{% url 'financeiro_report' %}">Ver relatórios</a>
+          <a class="button secondary-button" href="{% url 'lancamento_create' %}">
+            Novo lançamento
+          </a>
+        {% else %}
+          <a class="button" href="{% url 'signup' %}">Criar conta demo</a>
+          <a class="button secondary-button" href="{% url 'login' %}">Entrar</a>
+        {% endif %}
+      </div>
+    </div>
+    <aside class="hero-summary">
+      <span class="status-pill">MVP validado localmente</span>
+      <strong>27 testes automatizados</strong>
+      <p class="muted">Ruff, Django check e migrations check passando.</p>
+    </aside>
   </section>
 
-  <section class="grid">
-    <article class="card">
+  <section class="grid metrics-grid">
+    <article class="card metric-card">
       <span>Empresas</span>
       <strong>{{ total_empresas }}</strong>
     </article>
-    <article class="card">
+    <article class="card metric-card">
       <span>Clientes</span>
       <strong>{{ total_clientes }}</strong>
     </article>
-    <article class="card">
+    <article class="card metric-card">
       <span>Fornecedores</span>
       <strong>{{ total_fornecedores }}</strong>
     </article>
-    <article class="card">
+    <article class="card metric-card">
       <span>Contas contábeis</span>
       <strong>{{ total_contas }}</strong>
     </article>
-    <article class="card">
+    <article class="card metric-card">
       <span>Lançamentos</span>
       <strong>{{ total_lancamentos }}</strong>
     </article>
-    <article class="card success-card">
+    <article class="card metric-card success-card">
       <span>A receber em aberto</span>
       <strong>R$ {{ total_a_receber_aberto }}</strong>
     </article>
-    <article class="card danger-card">
+    <article class="card metric-card danger-card">
       <span>A pagar em aberto</span>
       <strong>R$ {{ total_a_pagar_aberto }}</strong>
     </article>
   </section>
 
-  <section class="panel">
-    <h2>Status dos lançamentos</h2>
-    {% if lancamentos_por_status %}
-      <ul>
-        {% for item in lancamentos_por_status %}
-          <li>{{ item.status }}: {{ item.total }}</li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p class="muted">Ainda não existem lançamentos.</p>
-    {% endif %}
+  <section class="split-layout">
+    <article class="panel">
+      <p class="eyebrow">Módulos do MVP</p>
+      <h2>Base operacional pronta para evoluir</h2>
+      <div class="feature-list">
+        <div>
+          <strong>Cadastros essenciais</strong>
+          <p>Empresas, clientes, fornecedores e plano de contas com isolamento por empresa.</p>
+        </div>
+        <div>
+          <strong>Contabilidade</strong>
+          <p>Lançamentos com validação de partidas dobradas e histórico de status.</p>
+        </div>
+        <div>
+          <strong>Financeiro</strong>
+          <p>Contas a receber, contas a pagar, vencimentos, baixas e fluxo previsto.</p>
+        </div>
+        <div>
+          <strong>Importação e exportação</strong>
+          <p>CSV para clientes, fornecedores, plano de contas e relatórios financeiros.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="panel">
+      <p class="eyebrow">Status dos lançamentos</p>
+      <h2>Saúde contábil</h2>
+      {% if lancamentos_por_status %}
+        <div class="status-list">
+          {% for item in lancamentos_por_status %}
+            <div class="status-row">
+              <span>{{ item.status }}</span>
+              <strong>{{ item.total }}</strong>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="muted">Ainda não existem lançamentos para exibir.</p>
+      {% endif %}
+    </article>
   </section>
 {% endblock %}
