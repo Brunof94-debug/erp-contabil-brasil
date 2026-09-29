@@ -2,7 +2,16 @@
 
 Base inicial profissional para um sistema ERP contábil brasileiro, criada do zero para evoluir com segurança.
 
-Versão local atual: `v0.1.2-demo`.
+Versão local atual: `v0.1.3-demo`.
+
+## Demonstração visual
+
+| Dashboard | Relatórios financeiros | Lançamentos contábeis |
+| --- | --- | --- |
+| ![Dashboard do ERP Contábil Brasil](docs/screenshots/dashboard.svg) | ![Relatórios financeiros do ERP Contábil Brasil](docs/screenshots/financeiro.svg) | ![Lançamentos contábeis do ERP Contábil Brasil](docs/screenshots/lancamentos.svg) |
+
+Essas imagens usam dados fictícios da demo local e destacam os módulos principais do MVP:
+dashboard operacional, fluxo financeiro e lançamentos contábeis com validação de partidas dobradas.
 
 ## Escopo inicial do MVP
 

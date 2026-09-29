@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Relatórios financeiros do ERP Contábil Brasil</title>
+  <desc id="desc">Tela conceitual dos relatórios financeiros com contas a receber, contas a pagar, vencidos e fluxo previsto.</desc>
+  <rect width="1280" height="760" fill="#f8fafc"/>
+  <rect x="0" y="0" width="1280" height="92" fill="#0f172a"/>
+  <text x="64" y="56" fill="#fff" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="800">Relatórios financeiros</text>
+  <text x="940" y="56" fill="#93c5fd" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15">Exportação CSV • Fluxo previsto</text>
+  <g font-family="Inter, Segoe UI, Arial, sans-serif">
+    <rect x="64" y="126" width="262" height="118" rx="20" fill="#ecfeff" stroke="#bae6fd"/>
+    <text x="92" y="166" fill="#0369a1" font-size="13" font-weight="800">A RECEBER EM ABERTO</text>
+    <text x="92" y="214" fill="#0f172a" font-size="34" font-weight="900">R$ 839,00</text>
+    <rect x="350" y="126" width="262" height="118" rx="20" fill="#fff7ed" stroke="#fed7aa"/>
+    <text x="378" y="166" fill="#c2410c" font-size="13" font-weight="800">A PAGAR EM ABERTO</text>
+    <text x="378" y="214" fill="#0f172a" font-size="34" font-weight="900">R$ 739,90</text>
+    <rect x="636" y="126" width="262" height="118" rx="20" fill="#f0fdf4" stroke="#bbf7d0"/>
+    <text x="664" y="166" fill="#15803d" font-size="13" font-weight="800">SALDO PREVISTO</text>
+    <text x="664" y="214" fill="#0f172a" font-size="34" font-weight="900">R$ 99,10</text>
+    <rect x="922" y="126" width="262" height="118" rx="20" fill="#fef2f2" stroke="#fecaca"/>
+    <text x="950" y="166" fill="#b91c1c" font-size="13" font-weight="800">TÍTULOS VENCIDOS</text>
+    <text x="950" y="214" fill="#0f172a" font-size="34" font-weight="900">1</text>
+  </g>
+  <g font-family="Inter, Segoe UI, Arial, sans-serif">
+    <rect x="64" y="294" width="1152" height="360" rx="24" fill="#fff" stroke="#e2e8f0"/>
+    <text x="100" y="350" fill="#0f172a" font-size="24" font-weight="900">Fluxo previsto por vencimento</text>
+    <text x="100" y="382" fill="#64748b" font-size="16">Visão consolidada para priorizar cobrança, pagamento e acompanhamento de caixa.</text>
+    <line x1="100" y1="432" x2="1148" y2="432" stroke="#e2e8f0"/>
+    <line x1="100" y1="506" x2="1148" y2="506" stroke="#e2e8f0"/>
+    <line x1="100" y1="580" x2="1148" y2="580" stroke="#e2e8f0"/>
+    <g font-size="14" fill="#64748b">
+      <text x="112" y="420">Tipo</text>
+      <text x="320" y="420">Cliente/Fornecedor</text>
+      <text x="650" y="420">Vencimento</text>
+      <text x="850" y="420">Status</text>
+      <text x="1030" y="420">Valor</text>
+    </g>
+    <g font-size="17" fill="#0f172a">
+      <text x="112" y="476">Receber</text>
+      <text x="320" y="476">Mercado Soluções LTDA</text>
+      <text x="650" y="476">Próximos 7 dias</text>
+      <text x="850" y="476">Em aberto</text>
+      <text x="1030" y="476">R$ 489,00</text>
+      <text x="112" y="550">Pagar</text>
+      <text x="320" y="550">Fornecedor Logística Sul</text>
+      <text x="650" y="550">Vencido</text>
+      <text x="850" y="550">Alerta</text>
+      <text x="1030" y="550">R$ 320,00</text>
+      <text x="112" y="624">Receber</text>
+      <text x="320" y="624">Clínica Horizonte</text>
+      <text x="650" y="624">Este mês</text>
+      <text x="850" y="624">Em aberto</text>
+      <text x="1030" y="624">R$ 350,00</text>
+    </g>
+  </g>
+</svg>

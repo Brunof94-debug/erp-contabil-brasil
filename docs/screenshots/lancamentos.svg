@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Lançamentos contábeis do ERP Contábil Brasil</title>
+  <desc id="desc">Tela conceitual de lançamentos contábeis com partidas dobradas, status e trilha de auditoria.</desc>
+  <rect width="1280" height="760" fill="#f8fafc"/>
+  <rect x="64" y="58" width="1152" height="92" rx="24" fill="#0f172a"/>
+  <text x="104" y="112" fill="#fff" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="30" font-weight="900">Lançamentos contábeis</text>
+  <text x="870" y="112" fill="#bae6fd" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16">Partidas dobradas • Auditoria • Multiempresa</text>
+  <g font-family="Inter, Segoe UI, Arial, sans-serif">
+    <rect x="64" y="198" width="1152" height="424" rx="24" fill="#fff" stroke="#e2e8f0"/>
+    <text x="104" y="252" fill="#0f172a" font-size="24" font-weight="900">Últimos lançamentos</text>
+    <text x="104" y="282" fill="#64748b" font-size="16">Registros balanceados e separados por empresa para preservar consistência contábil.</text>
+    <line x1="104" y1="334" x2="1176" y2="334" stroke="#e2e8f0"/>
+    <line x1="104" y1="430" x2="1176" y2="430" stroke="#e2e8f0"/>
+    <line x1="104" y1="526" x2="1176" y2="526" stroke="#e2e8f0"/>
+    <g fill="#64748b" font-size="14" font-weight="700">
+      <text x="118" y="322">DATA</text>
+      <text x="250" y="322">DESCRIÇÃO</text>
+      <text x="680" y="322">DÉBITO</text>
+      <text x="820" y="322">CRÉDITO</text>
+      <text x="990" y="322">STATUS</text>
+    </g>
+    <g fill="#0f172a" font-size="17">
+      <text x="118" y="386">15/09/2026</text>
+      <text x="250" y="386">Reconhecimento de receita recorrente</text>
+      <text x="680" y="386">R$ 489,00</text>
+      <text x="820" y="386">R$ 489,00</text>
+      <rect x="990" y="362" width="112" height="34" rx="17" fill="#dcfce7"/>
+      <text x="1012" y="385" fill="#166534" font-size="14" font-weight="800">POSTADO</text>
+      <text x="118" y="482">18/09/2026</text>
+      <text x="250" y="482">Despesa operacional com fornecedor</text>
+      <text x="680" y="482">R$ 320,00</text>
+      <text x="820" y="482">R$ 320,00</text>
+      <rect x="990" y="458" width="112" height="34" rx="17" fill="#dcfce7"/>
+      <text x="1012" y="481" fill="#166534" font-size="14" font-weight="800">POSTADO</text>
+      <text x="118" y="578">22/09/2026</text>
+      <text x="250" y="578">Baixa financeira e conciliação</text>
+      <text x="680" y="578">R$ 250,00</text>
+      <text x="820" y="578">R$ 250,00</text>
+      <rect x="990" y="554" width="112" height="34" rx="17" fill="#dcfce7"/>
+      <text x="1012" y="577" fill="#166534" font-size="14" font-weight="800">POSTADO</text>
+    </g>
+  </g>
+  <g font-family="Inter, Segoe UI, Arial, sans-serif">
+    <rect x="96" y="656" width="344" height="54" rx="16" fill="#ecfeff" stroke="#bae6fd"/>
+    <text x="124" y="690" fill="#0369a1" font-size="18" font-weight="800">Débito = Crédito em todos os registros</text>
+    <rect x="468" y="656" width="344" height="54" rx="16" fill="#f0fdf4" stroke="#bbf7d0"/>
+    <text x="496" y="690" fill="#166534" font-size="18" font-weight="800">Histórico e status preservados</text>
+    <rect x="840" y="656" width="344" height="54" rx="16" fill="#f5f3ff" stroke="#ddd6fe"/>
+    <text x="868" y="690" fill="#6d28d9" font-size="18" font-weight="800">Isolamento por empresa</text>
+  </g>
+</svg>

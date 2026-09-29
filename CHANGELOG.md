@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.1.3-demo — Apresentação visual para portfólio
+
+Versão focada em deixar o repositório mais forte para currículo/GitHub.
+
+### Incluído
+
+- Seção visual no README com imagens dos principais módulos.
+- Imagens versionadas em SVG para dashboard, relatórios financeiros e lançamentos contábeis.
+- Destaque mais claro para o escopo profissional da demo, sem expor dados sensíveis.
+
+### Validações locais
+
+- Artefatos visuais adicionados como arquivos estáticos de documentação.
+- Nenhum secret adicionado ao repositório.
+
 ## v0.1.2-demo — Revisão final de navegação local
 
 Correção encontrada durante a revisão prática antes da publicação no GitHub.
