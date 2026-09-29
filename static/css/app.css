@@ -225,6 +225,72 @@ a {
   padding: 14px 16px;
 }
 
+.finance-snapshot {
+  background:
+    linear-gradient(180deg, rgba(232, 244, 239, 0.6), rgba(255, 255, 255, 0.95)),
+    var(--card);
+}
+
+.flow-bar {
+  background: #edf1ee;
+  border-radius: 999px;
+  display: flex;
+  height: 20px;
+  margin: 22px 0 14px;
+  overflow: hidden;
+}
+
+.flow-receber {
+  background: #24a36f;
+  min-width: 4px;
+}
+
+.flow-pagar {
+  background: #d65c5c;
+  min-width: 4px;
+}
+
+.flow-legend,
+.quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.flow-legend {
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.legend-dot {
+  border-radius: 999px;
+  display: inline-block;
+  height: 10px;
+  margin-right: 6px;
+  width: 10px;
+}
+
+.receber-dot {
+  background: #24a36f;
+}
+
+.pagar-dot {
+  background: #d65c5c;
+}
+
+.quick-actions {
+  margin-top: 18px;
+}
+
+.quick-actions a {
+  background: #f8faf8;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-weight: 800;
+  padding: 10px 14px;
+}
+
 .page-heading {
   align-items: center;
   display: flex;

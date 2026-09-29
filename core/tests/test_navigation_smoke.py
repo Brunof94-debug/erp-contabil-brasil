@@ -43,6 +43,17 @@ def test_demo_usuario_abre_telas_principais_sem_erro(demo_client):
 
 
 @pytest.mark.django_db
+def test_demo_dashboard_mostra_indicadores_financeiros_visuais(demo_client):
+    response = demo_client.get(reverse("dashboard"))
+
+    assert response.status_code == 200
+    content = response.content.decode()
+    assert "Saldo previsto" in content
+    assert "Títulos vencidos" in content
+    assert "Receber versus pagar" in content
+
+
+@pytest.mark.django_db
 def test_demo_usuario_abre_edicao_detalhe_e_exclusao_sem_erro(demo_client):
     cliente = Cliente.objects.get(nome="Padaria Central Ltda.")
     fornecedor = Fornecedor.objects.get(nome="Nuvem Tecnologia")

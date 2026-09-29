@@ -26,7 +26,7 @@
     </div>
     <aside class="hero-summary">
       <span class="status-pill">MVP validado localmente</span>
-      <strong>27 testes automatizados</strong>
+      <strong>32 testes automatizados</strong>
       <p class="muted">Ruff, Django check e migrations check passando.</p>
     </aside>
   </section>
@@ -60,9 +60,39 @@
       <span>A pagar em aberto</span>
       <strong>R$ {{ total_a_pagar_aberto }}</strong>
     </article>
+    <article class="card metric-card {% if saldo_previsto >= 0 %}success-card{% else %}danger-card{% endif %}">
+      <span>Saldo previsto</span>
+      <strong>R$ {{ saldo_previsto }}</strong>
+    </article>
+    <article class="card metric-card danger-card">
+      <span>Títulos vencidos</span>
+      <strong>{{ titulos_vencidos_count }}</strong>
+    </article>
   </section>
 
   <section class="split-layout">
+    <article class="panel finance-snapshot">
+      <p class="eyebrow">Fluxo financeiro</p>
+      <h2>Receber versus pagar</h2>
+      <div class="flow-bar" aria-label="Distribuição do fluxo previsto">
+        <span class="flow-receber" style="width: {{ receber_percentual }}%"></span>
+        <span class="flow-pagar" style="width: {{ pagar_percentual }}%"></span>
+      </div>
+      <div class="flow-legend">
+        <span><i class="legend-dot receber-dot"></i> Receber: {{ receber_percentual }}%</span>
+        <span><i class="legend-dot pagar-dot"></i> Pagar: {{ pagar_percentual }}%</span>
+      </div>
+      <p class="muted">
+        O saldo previsto considera apenas títulos em aberto. Títulos vencidos aparecem como alerta
+        operacional para priorizar cobrança ou pagamento.
+      </p>
+      <div class="quick-actions">
+        <a href="{% url 'receber_list' %}">Ver contas a receber</a>
+        <a href="{% url 'pagar_list' %}">Ver contas a pagar</a>
+        <a href="{% url 'financeiro_report' %}">Abrir relatório</a>
+      </div>
+    </article>
+
     <article class="panel">
       <p class="eyebrow">Módulos do MVP</p>
       <h2>Base operacional pronta para evoluir</h2>

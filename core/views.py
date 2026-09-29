@@ -65,6 +65,19 @@ def dashboard(request):
         lancamentos = lancamentos.filter(empresa=empresa)
         titulos = titulos.filter(empresa=empresa)
 
+    titulos_abertos = titulos.filter(status=TituloFinanceiro.Status.ABERTO)
+    receber_aberto = titulos_abertos.filter(tipo=TituloFinanceiro.Tipo.RECEBER)
+    pagar_aberto = titulos_abertos.filter(tipo=TituloFinanceiro.Tipo.PAGAR)
+    total_a_receber_aberto = sum(titulo.valor for titulo in receber_aberto)
+    total_a_pagar_aberto = sum(titulo.valor for titulo in pagar_aberto)
+    saldo_previsto = total_a_receber_aberto - total_a_pagar_aberto
+    total_fluxo = total_a_receber_aberto + total_a_pagar_aberto
+    receber_percentual = 0
+    pagar_percentual = 0
+    if total_fluxo:
+        receber_percentual = round((total_a_receber_aberto / total_fluxo) * 100)
+        pagar_percentual = 100 - receber_percentual
+
     context = {
         "empresa_ativa": empresa,
         "total_empresas": empresas.count(),
@@ -72,20 +85,14 @@ def dashboard(request):
         "total_fornecedores": fornecedores.count(),
         "total_contas": contas.count(),
         "total_lancamentos": lancamentos.count(),
-        "total_a_receber_aberto": sum(
-            titulo.valor
-            for titulo in titulos.filter(
-                tipo=TituloFinanceiro.Tipo.RECEBER,
-                status=TituloFinanceiro.Status.ABERTO,
-            )
-        ),
-        "total_a_pagar_aberto": sum(
-            titulo.valor
-            for titulo in titulos.filter(
-                tipo=TituloFinanceiro.Tipo.PAGAR,
-                status=TituloFinanceiro.Status.ABERTO,
-            )
-        ),
+        "total_a_receber_aberto": total_a_receber_aberto,
+        "total_a_pagar_aberto": total_a_pagar_aberto,
+        "saldo_previsto": saldo_previsto,
+        "titulos_vencidos_count": titulos_abertos.filter(
+            vencimento__lt=timezone.localdate(),
+        ).count(),
+        "receber_percentual": receber_percentual,
+        "pagar_percentual": pagar_percentual,
         "lancamentos_por_status": lancamentos.values("status")
         .annotate(total=Count("id"))
         .order_by("status"),
