@@ -43,7 +43,6 @@ pip install -r requirements-dev.txt
 Copy-Item .env.example .env
 python manage.py migrate
 python manage.py seed_demo
-python manage.py createsuperuser
 python manage.py runserver
 ```
 
@@ -56,7 +55,6 @@ pip install -r requirements-dev.txt
 cp .env.example .env
 python manage.py migrate
 python manage.py seed_demo
-python manage.py createsuperuser
 python manage.py runserver
 ```
 
@@ -64,6 +62,19 @@ Depois acesse:
 
 ```text
 http://127.0.0.1:8000/
+```
+
+Para testar rapidamente, use o login demo criado pelo `seed_demo`:
+
+```text
+usuário: demo
+senha: demo12345
+```
+
+Criar um superusuário é opcional e só é necessário para acessar o painel administrativo do Django:
+
+```bash
+python manage.py createsuperuser
 ```
 
 ## Telas disponíveis
@@ -90,15 +101,7 @@ http://127.0.0.1:8000/
 - `/financeiro/relatorios/exportar.csv` — exportação CSV do fluxo previsto.
 - `/healthz/` — healthcheck.
 
-As telas de cadastro exigem login. Crie um superusuário com `python manage.py createsuperuser`.
-
-O comando `python manage.py seed_demo` também cria um usuário local de demonstração:
-
-```text
-usuário: demo
-senha: demo12345
-```
-
+As telas internas exigem login. Para avaliação do projeto, use o usuário demo informado acima.
 Esse usuário fica vinculado à `Contábil Aurora Demo`, permitindo testar o isolamento por empresa.
 O seed inclui dados fictícios profissionais: clientes, fornecedores, plano de contas,
 lançamentos balanceados, contas a receber, contas a pagar e vencimentos variados.
