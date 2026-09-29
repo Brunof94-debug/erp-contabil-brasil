@@ -45,6 +45,6 @@ Pequenas empresas e operadores financeiros frequentemente controlam clientes, fo
 
 ## Status
 
-Versão local atual: `v0.1.0-demo`.
+Versão local atual: `v0.1.1-demo`.
 
 O projeto está pronto para publicação como repositório de portfólio e para um deploy demo controlado. Ainda não deve ser apresentado como produto contábil/fiscal pronto para uso oficial sem validação especializada.

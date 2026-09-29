@@ -2,7 +2,7 @@
 
 Base inicial profissional para um sistema ERP contábil brasileiro, criada do zero para evoluir com segurança.
 
-Versão local atual: `v0.1.0-demo`.
+Versão local atual: `v0.1.1-demo`.
 
 ## Escopo inicial do MVP
 
@@ -139,6 +139,7 @@ Use o [RUNBOOK.md](RUNBOOK.md) para conferir variáveis mínimas e checks antes 
 - [SECURITY.md](SECURITY.md) — princípios de segurança.
 - [CHANGELOG.md](CHANGELOG.md) — histórico de versões.
 - [PORTFOLIO.md](PORTFOLIO.md) — resumo profissional para currículo/GitHub.
+- [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md) — checklist final da demo local.
 
 ## Próximas fases
 

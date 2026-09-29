@@ -1,5 +1,26 @@
 # Changelog
 
+## v0.1.1-demo — Demo completa para portfólio
+
+Versão local refinada para apresentação profissional antes de publicação no GitHub.
+
+### Incluído
+
+- Páginas institucionais de sobre, termos de uso e privacidade.
+- Dashboard com snapshot financeiro, saldo previsto e alertas operacionais.
+- Smoke tests de navegação das principais telas.
+- Melhorias responsivas para desktop, tablet e celular.
+- Polimento de formulários, mensagens de erro, textos de ajuda, buscas e estados vazios.
+- Checklist final de produto para validar a demo antes de publicar.
+
+### Validações locais
+
+- Ruff: PASS.
+- Testes automatizados: PASS — 34 testes.
+- Django check: PASS.
+- `makemigrations --check`: PASS.
+- `collectstatic`: PASS.
+
 ## v0.1.0-demo — MVP demonstrável
 
 Primeira versão local demonstrável do ERP Contábil Brasil.
