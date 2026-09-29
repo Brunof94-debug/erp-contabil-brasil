@@ -27,16 +27,13 @@ Importante: este projeto ainda não declara conformidade fiscal, SPED, NF-e, eSo
 
 ## Como rodar localmente
 
-Clone o repositório e entre na pasta do projeto:
+### Teste rápido no Windows PowerShell
 
-```bash
-git clone https://github.com/Brunof94-debug/erp-contabil-brasil.git
-cd erp-contabil-brasil
-```
-
-No Windows PowerShell:
+Copie e cole este bloco no PowerShell:
 
 ```powershell
+git clone https://github.com/Brunof94-debug/erp-contabil-brasil.git
+cd erp-contabil-brasil
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements-dev.txt
@@ -46,9 +43,24 @@ python manage.py seed_demo
 python manage.py runserver
 ```
 
-No macOS/Linux:
+Depois abra no navegador:
+
+```text
+http://127.0.0.1:8000/
+```
+
+Login demo:
+
+```text
+usuário: demo
+senha: demo12345
+```
+
+### macOS/Linux
 
 ```bash
+git clone https://github.com/Brunof94-debug/erp-contabil-brasil.git
+cd erp-contabil-brasil
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements-dev.txt
@@ -64,14 +76,16 @@ Depois acesse:
 http://127.0.0.1:8000/
 ```
 
-Para testar rapidamente, use o login demo criado pelo `seed_demo`:
+Com o mesmo login demo:
 
 ```text
 usuário: demo
 senha: demo12345
 ```
 
-Criar um superusuário é opcional e só é necessário para acessar o painel administrativo do Django:
+### Admin opcional
+
+Criar superusuário não é necessário para testar a demo. Use apenas se quiser acessar o painel administrativo do Django:
 
 ```bash
 python manage.py createsuperuser
