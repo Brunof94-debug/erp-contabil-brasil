@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Configurar empresa — ERP Contábil Brasil{% endblock %}
+
+{% block content %}
+  <section class="auth-card">
+    <p class="eyebrow">Primeiro acesso</p>
+    <h1>Configure sua empresa</h1>
+    <p class="muted">
+      Para manter os dados contábeis isolados e seguros, cada usuário precisa estar vinculado
+      a uma empresa antes de acessar clientes, fornecedores, plano de contas e lançamentos.
+    </p>
+
+    <form method="post" class="form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="button">Criar empresa e continuar</button>
+    </form>
+  </section>
+{% endblock %}

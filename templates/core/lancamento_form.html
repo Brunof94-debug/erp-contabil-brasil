@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} — ERP Contábil Brasil{% endblock %}
+
+{% block content %}
+  <section class="page-heading">
+    <div>
+      <p class="eyebrow">Partidas dobradas</p>
+      <h1>{{ title }}</h1>
+      <p class="muted">O lançamento só é aceito quando o total de débitos for igual ao total de créditos.</p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <form method="post" class="form">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <h2>Itens do lançamento</h2>
+      {{ formset.management_form }}
+      {% for item_form in formset %}
+        <div class="inline-panel">
+          {{ item_form.as_p }}
+        </div>
+      {% endfor %}
+
+      <div class="form-actions">
+        <button class="button" type="submit">Salvar lançamento</button>
+        <a href="{% url 'lancamento_list' %}">Cancelar</a>
+      </div>
+    </form>
+  </section>
+{% endblock %}

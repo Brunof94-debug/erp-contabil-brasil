@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} — ERP Contábil Brasil{% endblock %}
+
+{% block content %}
+  <section class="page-heading">
+    <div>
+      <p class="eyebrow">Financeiro</p>
+      <h1>{{ title }}</h1>
+      <p class="muted">Total em aberto: R$ {{ total_aberto }}</p>
+    </div>
+    <div class="actions">
+      {% if title == "Contas a receber" %}
+        <a href="{% url 'receber_csv' %}">Exportar CSV</a>
+      {% else %}
+        <a href="{% url 'pagar_csv' %}">Exportar CSV</a>
+      {% endif %}
+      <a class="button" href="{% url create_url_name %}">Novo</a>
+    </div>
+  </section>
+
+  <section class="panel">
+    {% if objects %}
+      <div class="table">
+        {% for object in objects %}
+          <article class="row-card">
+            <div>
+              <strong>{{ object.descricao }}</strong>
+              <p class="muted">
+                Vencimento: {{ object.vencimento|date:"d/m/Y" }} · {{ object.status }}
+              </p>
+            </div>
+            <div class="money-columns">
+              <span>R$ {{ object.valor }}</span>
+              <span>
+                {% if object.cliente %}{{ object.cliente }}{% endif %}
+                {% if object.fornecedor %}{{ object.fornecedor }}{% endif %}
+              </span>
+            </div>
+            <div class="actions">
+              <a href="{% url edit_url_name object.pk %}">Editar</a>
+              <a class="danger" href="{% url delete_url_name object.pk %}">Excluir</a>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="muted">Nenhum título encontrado.</p>
+    {% endif %}
+  </section>
+{% endblock %}

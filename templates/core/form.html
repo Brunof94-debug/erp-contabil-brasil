@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} — ERP Contábil Brasil{% endblock %}
+
+{% block content %}
+  <section class="page-heading">
+    <div>
+      <p class="eyebrow">Formulário</p>
+      <h1>{{ title }}</h1>
+    </div>
+  </section>
+
+  <section class="panel">
+    <form method="post" class="form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="form-actions">
+        <button class="button" type="submit">Salvar</button>
+        <a href="javascript:history.back()">Cancelar</a>
+      </div>
+    </form>
+  </section>
+{% endblock %}
+

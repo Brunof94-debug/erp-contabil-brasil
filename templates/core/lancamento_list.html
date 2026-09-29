@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Lançamentos — ERP Contábil Brasil{% endblock %}
+
+{% block content %}
+  <section class="page-heading">
+    <div>
+      <p class="eyebrow">Contabilidade</p>
+      <h1>Lançamentos contábeis</h1>
+    </div>
+    <a class="button" href="{% url 'lancamento_create' %}">Novo lançamento</a>
+  </section>
+
+  <section class="panel">
+    {% if objects %}
+      <div class="table">
+        {% for object in objects %}
+          <article class="row-card">
+            <div>
+              <strong>
+                <a href="{% url 'lancamento_detail' object.pk %}">
+                  {{ object.data|date:"d/m/Y" }} — {{ object.historico }}
+                </a>
+              </strong>
+              <p class="muted">{{ object.empresa }} · {{ object.status }}</p>
+            </div>
+            <div class="actions">
+              <a href="{% url 'lancamento_detail' object.pk %}">Ver</a>
+              <a href="{% url 'lancamento_update' object.pk %}">Editar</a>
+              <a class="danger" href="{% url 'lancamento_delete' object.pk %}">Excluir</a>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="muted">Nenhum lançamento encontrado.</p>
+    {% endif %}
+  </section>
+{% endblock %}

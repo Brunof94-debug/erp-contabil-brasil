@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} — ERP Contábil Brasil{% endblock %}
+
+{% block content %}
+  <section class="page-heading">
+    <div>
+      <p class="eyebrow">Cadastros</p>
+      <h1>{{ title }}</h1>
+    </div>
+    <div class="actions">
+      {% if title == "Clientes" %}
+        <a href="{% url 'cliente_import' %}">Importar CSV</a>
+      {% elif title == "Fornecedores" %}
+        <a href="{% url 'fornecedor_import' %}">Importar CSV</a>
+      {% elif title == "Plano de contas" %}
+        <a href="{% url 'conta_import' %}">Importar CSV</a>
+      {% endif %}
+      <a class="button" href="{% url create_url_name %}">Novo</a>
+    </div>
+  </section>
+
+  <section class="panel">
+    {% if objects %}
+      <div class="table">
+        {% for object in objects %}
+          <article class="row-card">
+            <div>
+              <strong>{{ object }}</strong>
+              <p class="muted">Criado em {{ object.created_at|date:"d/m/Y H:i" }}</p>
+            </div>
+            <div class="actions">
+              <a href="{% url edit_url_name object.pk %}">Editar</a>
+              <a class="danger" href="{% url delete_url_name object.pk %}">Excluir</a>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="muted">Nenhum registro encontrado.</p>
+    {% endif %}
+  </section>
+{% endblock %}
+

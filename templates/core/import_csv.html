@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} — ERP Contábil Brasil{% endblock %}
+
+{% block content %}
+  <section class="page-heading">
+    <div>
+      <p class="eyebrow">Importação</p>
+      <h1>{{ title }}</h1>
+      <p class="muted">{{ description }}</p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Formato esperado</h2>
+    <p class="muted">
+      Cabeçalhos obrigatórios:
+      {% for header in required_headers %}
+        <code>{{ header }}</code>{% if not forloop.last %}, {% endif %}
+      {% endfor %}
+    </p>
+
+    <form method="post" enctype="multipart/form-data" class="form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="form-actions">
+        <button type="submit" class="button">Importar</button>
+        <a href="javascript:history.back()">Cancelar</a>
+      </div>
+    </form>
+  </section>
+{% endblock %}

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}ERP Contábil Brasil{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/app.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <strong>ERP Contábil Brasil</strong>
+        <span class="muted">MVP operacional</span>
+      </div>
+      <nav>
+        <a href="/">Dashboard</a>
+        <a href="/empresas/">Empresas</a>
+        <a href="/clientes/">Clientes</a>
+        <a href="/fornecedores/">Fornecedores</a>
+        <a href="/plano-de-contas/">Plano de contas</a>
+        <a href="/lancamentos/">Lançamentos</a>
+        <a href="/financeiro/receber/">Receber</a>
+        <a href="/financeiro/pagar/">Pagar</a>
+        <a href="/financeiro/relatorios/">Relatórios</a>
+        <a href="/admin/">Admin</a>
+        {% if request.user.is_authenticated %}
+          <form method="post" action="{% url 'logout' %}" class="inline-form">
+            {% csrf_token %}
+            <button type="submit" class="link-button">Sair</button>
+          </form>
+        {% else %}
+          <a href="{% url 'login' %}">Entrar</a>
+        {% endif %}
+      </nav>
+    </header>
+    <main class="container">
+      {% if messages %}
+        <section class="messages">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </section>
+      {% endif %}
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>

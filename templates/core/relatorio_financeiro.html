@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Relatórios financeiros — ERP Contábil Brasil{% endblock %}
+
+{% block content %}
+  <section class="page-heading">
+    <div>
+      <p class="eyebrow">Relatórios</p>
+      <h1>Financeiro operacional</h1>
+      <p class="muted">Visão de caixa previsto, títulos vencidos e resumo mensal.</p>
+    </div>
+    <a class="button" href="{% url 'financeiro_report_csv' %}">Exportar fluxo CSV</a>
+  </section>
+
+  <section class="grid">
+    <article class="card success-card">
+      <span>A receber em aberto</span>
+      <strong>R$ {{ total_receber_aberto }}</strong>
+    </article>
+    <article class="card danger-card">
+      <span>A pagar em aberto</span>
+      <strong>R$ {{ total_pagar_aberto }}</strong>
+    </article>
+    <article class="card">
+      <span>Saldo previsto</span>
+      <strong>R$ {{ saldo_previsto }}</strong>
+    </article>
+    <article class="card danger-card">
+      <span>Vencido em aberto</span>
+      <strong>R$ {{ total_vencido }}</strong>
+    </article>
+  </section>
+
+  <section class="panel">
+    <h2>Resumo mensal previsto</h2>
+    {% if resumo_mensal %}
+      <div class="table">
+        {% for item in resumo_mensal %}
+          <article class="row-card">
+            <div>
+              <strong>{{ item.mes|date:"m/Y" }}</strong>
+              <p class="muted">Fluxo previsto do mês</p>
+            </div>
+            <div class="money-columns">
+              <span>Receber: R$ {{ item.receber }}</span>
+              <span>Pagar: R$ {{ item.pagar }}</span>
+              <strong>Saldo: R$ {{ item.saldo }}</strong>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="muted">Sem títulos em aberto para compor o resumo mensal.</p>
+    {% endif %}
+  </section>
+
+  <section class="panel">
+    <h2>Títulos vencidos em aberto</h2>
+    {% if titulos_vencidos %}
+      <div class="table">
+        {% for titulo in titulos_vencidos %}
+          <article class="row-card">
+            <div>
+              <strong>{{ titulo.descricao }}</strong>
+              <p class="muted">{{ titulo.get_tipo_display }} · Venceu em {{ titulo.vencimento|date:"d/m/Y" }}</p>
+            </div>
+            <div class="money-columns">
+              <span>R$ {{ titulo.valor }}</span>
+              <span>
+                {% if titulo.cliente %}{{ titulo.cliente }}{% endif %}
+                {% if titulo.fornecedor %}{{ titulo.fornecedor }}{% endif %}
+              </span>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="muted">Nenhum título vencido em aberto.</p>
+    {% endif %}
+  </section>
+{% endblock %}

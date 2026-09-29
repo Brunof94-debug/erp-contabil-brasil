@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Criar conta — ERP Contábil Brasil{% endblock %}
+
+{% block content %}
+  <section class="auth-card">
+    <p class="eyebrow">Começar agora</p>
+    <h1>Crie sua conta</h1>
+    <p class="muted">
+      Depois do cadastro, você vai configurar sua empresa e o sistema manterá os dados isolados nela.
+    </p>
+
+    <form method="post" class="form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="button">Criar conta</button>
+    </form>
+
+    <p class="muted">
+      Já tem conta? <a href="{% url 'login' %}">Entrar</a>
+    </p>
+  </section>
+{% endblock %}

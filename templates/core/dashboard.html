@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard — ERP Contábil Brasil{% endblock %}
+
+{% block content %}
+  <section class="hero">
+    <p class="eyebrow">Novo projeto</p>
+    <h1>ERP Contábil Brasil</h1>
+    <p>
+      Fundação inicial para organizar empresas, clientes, fornecedores, plano de contas
+      e lançamentos contábeis com validação de partidas dobradas.
+    </p>
+  </section>
+
+  <section class="grid">
+    <article class="card">
+      <span>Empresas</span>
+      <strong>{{ total_empresas }}</strong>
+    </article>
+    <article class="card">
+      <span>Clientes</span>
+      <strong>{{ total_clientes }}</strong>
+    </article>
+    <article class="card">
+      <span>Fornecedores</span>
+      <strong>{{ total_fornecedores }}</strong>
+    </article>
+    <article class="card">
+      <span>Contas contábeis</span>
+      <strong>{{ total_contas }}</strong>
+    </article>
+    <article class="card">
+      <span>Lançamentos</span>
+      <strong>{{ total_lancamentos }}</strong>
+    </article>
+    <article class="card success-card">
+      <span>A receber em aberto</span>
+      <strong>R$ {{ total_a_receber_aberto }}</strong>
+    </article>
+    <article class="card danger-card">
+      <span>A pagar em aberto</span>
+      <strong>R$ {{ total_a_pagar_aberto }}</strong>
+    </article>
+  </section>
+
+  <section class="panel">
+    <h2>Status dos lançamentos</h2>
+    {% if lancamentos_por_status %}
+      <ul>
+        {% for item in lancamentos_por_status %}
+          <li>{{ item.status }}: {{ item.total }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="muted">Ainda não existem lançamentos.</p>
+    {% endif %}
+  </section>
+{% endblock %}

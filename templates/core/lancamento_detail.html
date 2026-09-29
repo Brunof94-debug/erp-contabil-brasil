@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Lançamento — ERP Contábil Brasil{% endblock %}
+
+{% block content %}
+  <section class="page-heading">
+    <div>
+      <p class="eyebrow">Lançamento contábil</p>
+      <h1>{{ lancamento.historico }}</h1>
+      <p class="muted">{{ lancamento.empresa }} · {{ lancamento.data|date:"d/m/Y" }} · {{ lancamento.status }}</p>
+    </div>
+    <div class="actions">
+      <a class="button" href="{% url 'lancamento_update' lancamento.pk %}">Editar</a>
+      <a href="{% url 'lancamento_list' %}">Voltar</a>
+    </div>
+  </section>
+
+  <section class="grid">
+    <article class="card">
+      <span>Total de débitos</span>
+      <strong>R$ {{ total_debito }}</strong>
+    </article>
+    <article class="card">
+      <span>Total de créditos</span>
+      <strong>R$ {{ total_credito }}</strong>
+    </article>
+    <article class="card {% if esta_balanceado %}success-card{% else %}danger-card{% endif %}">
+      <span>Situação</span>
+      <strong>{% if esta_balanceado %}Balanceado{% else %}Revisar{% endif %}</strong>
+    </article>
+  </section>
+
+  <section class="panel">
+    <h2>Itens</h2>
+    {% if lancamento.itens.all %}
+      <div class="table">
+        {% for item in lancamento.itens.all %}
+          <article class="row-card">
+            <div>
+              <strong>{{ item.conta }}</strong>
+              {% if item.complemento %}
+                <p class="muted">{{ item.complemento }}</p>
+              {% endif %}
+            </div>
+            <div class="money-columns">
+              <span>Débito: R$ {{ item.debito }}</span>
+              <span>Crédito: R$ {{ item.credito }}</span>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="muted">Este lançamento ainda não possui itens.</p>
+    {% endif %}
+  </section>
+{% endblock %}
