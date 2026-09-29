@@ -21,6 +21,24 @@
   </section>
 
   <section class="panel">
+    {% if has_search %}
+      <form method="get" class="search-bar">
+        <label for="q">Buscar em {{ title|lower }}</label>
+        <div>
+          <input
+            id="q"
+            name="q"
+            placeholder="Digite nome, documento, e-mail ou código"
+            value="{{ search_query }}"
+          >
+          <button type="submit">Buscar</button>
+          {% if search_query %}
+            <a href="?">Limpar</a>
+          {% endif %}
+        </div>
+      </form>
+    {% endif %}
+
     {% if objects %}
       <div class="table">
         {% for object in objects %}
@@ -37,7 +55,16 @@
         {% endfor %}
       </div>
     {% else %}
-      <p class="muted">Nenhum registro encontrado.</p>
+      <div class="empty-state">
+        {% if search_query %}
+          <strong>Nenhum resultado para “{{ search_query }}”.</strong>
+          <p class="muted">Tente outro termo ou limpe a busca para ver todos os registros.</p>
+          <a href="?">Limpar busca</a>
+        {% else %}
+          <strong>Nenhum registro encontrado.</strong>
+          <p class="muted">Crie o primeiro registro ou importe um CSV para começar.</p>
+        {% endif %}
+      </div>
     {% endif %}
   </section>
 {% endblock %}

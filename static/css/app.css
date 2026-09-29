@@ -339,6 +339,53 @@ button {
   margin-bottom: 18px;
 }
 
+.search-bar {
+  background: #f8faf8;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  display: grid;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 16px;
+}
+
+.search-bar label {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.search-bar div {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.search-bar input {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  flex: 1 1 260px;
+  font: inherit;
+  min-width: 0;
+  padding: 12px;
+}
+
+.empty-state {
+  background: #f8faf8;
+  border: 1px dashed var(--line);
+  border-radius: 14px;
+  padding: 28px;
+  text-align: center;
+}
+
+.empty-state p {
+  margin: 8px auto 12px;
+  max-width: 520px;
+}
+
 @media (max-width: 900px) {
   .topbar,
   .row-card,

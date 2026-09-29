@@ -20,6 +20,22 @@
   </section>
 
   <section class="panel">
+    <form method="get" class="search-bar">
+      <label for="q">Buscar títulos</label>
+      <div>
+        <input
+          id="q"
+          name="q"
+          placeholder="Digite descrição, status, cliente ou fornecedor"
+          value="{{ search_query }}"
+        >
+        <button type="submit">Buscar</button>
+        {% if search_query %}
+          <a href="?">Limpar</a>
+        {% endif %}
+      </div>
+    </form>
+
     {% if objects %}
       <div class="table">
         {% for object in objects %}
@@ -45,7 +61,16 @@
         {% endfor %}
       </div>
     {% else %}
-      <p class="muted">Nenhum título encontrado.</p>
+      <div class="empty-state">
+        {% if search_query %}
+          <strong>Nenhum título encontrado para “{{ search_query }}”.</strong>
+          <p class="muted">Tente outro termo ou limpe a busca.</p>
+          <a href="?">Limpar busca</a>
+        {% else %}
+          <strong>Nenhum título encontrado.</strong>
+          <p class="muted">Cadastre o primeiro título para acompanhar vencimentos e fluxo previsto.</p>
+        {% endif %}
+      </div>
     {% endif %}
   </section>
 {% endblock %}

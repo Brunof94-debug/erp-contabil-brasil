@@ -198,6 +198,26 @@ def test_usuario_ve_apenas_clientes_da_sua_empresa(client, django_user_model):
 
 
 @pytest.mark.django_db
+def test_busca_clientes_filtra_dentro_da_empresa_do_usuario(client, django_user_model):
+    empresa_a = Empresa.objects.create(nome="Empresa A")
+    empresa_b = Empresa.objects.create(nome="Empresa B")
+    Cliente.objects.create(empresa=empresa_a, nome="Cliente Encontrado", email="ok@example.com")
+    Cliente.objects.create(empresa=empresa_a, nome="Cliente Oculto", email="outro@example.com")
+    Cliente.objects.create(empresa=empresa_b, nome="Cliente Encontrado B", email="ok@example.com")
+    user = django_user_model.objects.create_user(username="busca-cliente", password="senha-teste")
+    PerfilUsuario.objects.create(usuario=user, empresa=empresa_a)
+    client.force_login(user)
+
+    response = client.get(reverse("cliente_list"), {"q": "Encontrado"})
+
+    assert response.status_code == 200
+    content = response.content.decode()
+    assert "Cliente Encontrado" in content
+    assert "Cliente Oculto" not in content
+    assert "Cliente Encontrado B" not in content
+
+
+@pytest.mark.django_db
 def test_usuario_nao_abre_lancamento_de_outra_empresa(client, django_user_model):
     empresa_a = Empresa.objects.create(nome="Empresa A")
     empresa_b = Empresa.objects.create(nome="Empresa B")

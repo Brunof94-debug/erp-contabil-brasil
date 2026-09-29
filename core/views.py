@@ -6,7 +6,7 @@ from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ValidationError
 from django.db import transaction
-from django.db.models import Count
+from django.db.models import Count, Q
 from django.db.models.functions import TruncMonth
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
@@ -191,6 +191,26 @@ class EmpresaScopedMixin(OnboardingRequiredMixin):
         return super().form_valid(form)
 
 
+class SearchableListMixin:
+    search_fields = []
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        query = self.request.GET.get("q", "").strip()
+        if query and self.search_fields:
+            filters = Q()
+            for field in self.search_fields:
+                filters |= Q(**{f"{field}__icontains": query})
+            queryset = queryset.filter(filters)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["search_query"] = self.request.GET.get("q", "").strip()
+        context["has_search"] = bool(self.search_fields)
+        return context
+
+
 class EmpresaListView(EmpresaScopedMixin, ListView):
     model = Empresa
     template_name = "core/list.html"
@@ -236,10 +256,11 @@ class EmpresaDeleteView(EmpresaScopedMixin, DeleteView):
     extra_context = {"title": "Excluir empresa"}
 
 
-class ClienteListView(EmpresaScopedMixin, ListView):
+class ClienteListView(SearchableListMixin, EmpresaScopedMixin, ListView):
     model = Cliente
     template_name = "core/list.html"
     context_object_name = "objects"
+    search_fields = ["nome", "documento", "email", "telefone"]
     extra_context = {
         "title": "Clientes",
         "create_url_name": "cliente_create",
@@ -272,10 +293,11 @@ class ClienteDeleteView(EmpresaScopedMixin, DeleteView):
     extra_context = {"title": "Excluir cliente"}
 
 
-class FornecedorListView(EmpresaScopedMixin, ListView):
+class FornecedorListView(SearchableListMixin, EmpresaScopedMixin, ListView):
     model = Fornecedor
     template_name = "core/list.html"
     context_object_name = "objects"
+    search_fields = ["nome", "documento", "email", "telefone"]
     extra_context = {
         "title": "Fornecedores",
         "create_url_name": "fornecedor_create",
@@ -308,10 +330,11 @@ class FornecedorDeleteView(EmpresaScopedMixin, DeleteView):
     extra_context = {"title": "Excluir fornecedor"}
 
 
-class ContaListView(EmpresaScopedMixin, ListView):
+class ContaListView(SearchableListMixin, EmpresaScopedMixin, ListView):
     model = ContaContabil
     template_name = "core/list.html"
     context_object_name = "objects"
+    search_fields = ["codigo", "nome", "tipo"]
     extra_context = {
         "title": "Plano de contas",
         "create_url_name": "conta_create",
@@ -344,10 +367,11 @@ class ContaDeleteView(EmpresaScopedMixin, DeleteView):
     extra_context = {"title": "Excluir conta contábil"}
 
 
-class LancamentoListView(EmpresaScopedMixin, ListView):
+class LancamentoListView(SearchableListMixin, EmpresaScopedMixin, ListView):
     model = LancamentoContabil
     template_name = "core/lancamento_list.html"
     context_object_name = "objects"
+    search_fields = ["historico", "status"]
 
 
 class LancamentoDetailView(EmpresaScopedMixin, DetailView):
@@ -474,9 +498,16 @@ class TituloFinanceiroBaseMixin(EmpresaScopedMixin):
         return reverse_lazy(self.success_url_name)
 
 
-class TituloFinanceiroListView(TituloFinanceiroBaseMixin, ListView):
+class TituloFinanceiroListView(SearchableListMixin, TituloFinanceiroBaseMixin, ListView):
     template_name = "core/financeiro_list.html"
     context_object_name = "objects"
+    search_fields = [
+        "descricao",
+        "status",
+        "cliente__nome",
+        "fornecedor__nome",
+        "observacoes",
+    ]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
