@@ -1,6 +1,6 @@
 # Checklist de Produto — ERP Contábil Brasil
 
-## v0.1.1-demo
+## v0.1.2-demo
 
 Checklist usado para considerar a demo local pronta antes de publicar no GitHub.
 
@@ -22,7 +22,7 @@ Checklist usado para considerar a demo local pronta antes de publicar no GitHub.
 ## Qualidade
 
 - Ruff: PASS.
-- Testes automatizados: PASS — 34 testes.
+- Testes automatizados: PASS — 35 testes.
 - Django check: PASS.
 - `makemigrations --check`: PASS.
 - `collectstatic`: PASS.

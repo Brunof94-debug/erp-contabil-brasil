@@ -2,7 +2,7 @@
 
 Base inicial profissional para um sistema ERP contábil brasileiro, criada do zero para evoluir com segurança.
 
-Versão local atual: `v0.1.1-demo`.
+Versão local atual: `v0.1.2-demo`.
 
 ## Escopo inicial do MVP
 

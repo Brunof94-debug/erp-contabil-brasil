@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.1.2-demo — Revisão final de navegação local
+
+Correção encontrada durante a revisão prática antes da publicação no GitHub.
+
+### Corrigido
+
+- O comando `seed_demo` agora é repetível mesmo quando o usuário demo já possui perfil local existente.
+- Adicionado teste automatizado para impedir regressão desse cenário.
+
+### Validações locais
+
+- Navegação automática com usuário demo: PASS.
+- Ruff: PASS.
+- Testes automatizados: PASS — 35 testes.
+- Django check: PASS.
+- `makemigrations --check`: PASS.
+- `collectstatic`: PASS.
+
 ## v0.1.1-demo — Demo completa para portfólio
 
 Versão local refinada para apresentação profissional antes de publicação no GitHub.
@@ -16,7 +34,7 @@ Versão local refinada para apresentação profissional antes de publicação no
 ### Validações locais
 
 - Ruff: PASS.
-- Testes automatizados: PASS — 34 testes.
+- Testes automatizados: PASS — 35 testes.
 - Django check: PASS.
 - `makemigrations --check`: PASS.
 - `collectstatic`: PASS.

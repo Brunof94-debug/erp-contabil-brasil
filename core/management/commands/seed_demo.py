@@ -50,7 +50,14 @@ class Command(BaseCommand):
         if created:
             usuario.set_password("demo12345")
             usuario.save(update_fields=["password"])
-        PerfilUsuario.objects.get_or_create(usuario=usuario, empresa=empresa)
+        perfil, _created = PerfilUsuario.objects.get_or_create(
+            usuario=usuario,
+            defaults={"empresa": empresa},
+        )
+        if perfil.empresa_id != empresa.id:
+            perfil.empresa = empresa
+            perfil.ativo = True
+            perfil.save(update_fields=["empresa", "ativo", "updated_at"])
 
     def _clientes(self, empresa):
         dados = [
