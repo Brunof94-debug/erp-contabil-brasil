@@ -22,6 +22,7 @@
         <a href="/financeiro/receber/">Receber</a>
         <a href="/financeiro/pagar/">Pagar</a>
         <a href="/financeiro/relatorios/">Relatórios</a>
+        <a href="{% url 'sobre' %}">Sobre</a>
         <a href="/admin/">Admin</a>
         {% if request.user.is_authenticated %}
           <form method="post" action="{% url 'logout' %}" class="inline-form">
@@ -43,5 +44,13 @@
       {% endif %}
       {% block content %}{% endblock %}
     </main>
+    <footer class="site-footer">
+      <span>ERP Contábil Brasil — demo técnica</span>
+      <nav>
+        <a href="{% url 'sobre' %}">Sobre</a>
+        <a href="{% url 'privacidade' %}">Privacidade</a>
+        <a href="{% url 'termos' %}">Termos</a>
+      </nav>
+    </footer>
   </body>
 </html>

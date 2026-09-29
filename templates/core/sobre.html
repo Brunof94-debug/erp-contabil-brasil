@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Sobre — ERP Contábil Brasil{% endblock %}
+
+{% block content %}
+  <section class="panel legal-page">
+    <p class="eyebrow">Sobre o projeto</p>
+    <h1>ERP Contábil Brasil</h1>
+    <p>
+      O ERP Contábil Brasil é um MVP demonstrável de sistema web para organização
+      financeira e contábil de pequenas empresas. A proposta é centralizar cadastros,
+      plano de contas, lançamentos, contas a receber, contas a pagar e relatórios
+      básicos em uma interface simples.
+    </p>
+    <p>
+      Esta versão foi criada como projeto técnico evolutivo, com foco em boas práticas
+      de desenvolvimento, testes automatizados, isolamento por empresa e preparação para
+      deploy demo.
+    </p>
+
+    <h2>O que esta demo mostra</h2>
+    <ul>
+      <li>Cadastro e autenticação de usuários.</li>
+      <li>Onboarding de empresa e isolamento de dados.</li>
+      <li>Plano de contas e lançamentos com partidas dobradas.</li>
+      <li>Financeiro básico com contas a receber, contas a pagar e relatórios.</li>
+      <li>Importação e exportação CSV.</li>
+    </ul>
+
+    <h2>Limite importante</h2>
+    <p>
+      Este MVP não declara conformidade fiscal, SPED, NF-e, eSocial, apuração oficial
+      de tributos ou substituição de orientação contábil profissional.
+    </p>
+  </section>
+{% endblock %}

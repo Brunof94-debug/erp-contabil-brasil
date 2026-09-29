@@ -106,6 +106,18 @@ def healthz(request):
     return JsonResponse({"status": "ok", "service": "erp-contabil-brasil"})
 
 
+def sobre(request):
+    return render(request, "core/sobre.html")
+
+
+def privacidade(request):
+    return render(request, "core/privacidade.html")
+
+
+def termos(request):
+    return render(request, "core/termos.html")
+
+
 class CadastroUsuarioView(CreateView):
     form_class = CadastroUsuarioForm
     template_name = "registration/signup.html"

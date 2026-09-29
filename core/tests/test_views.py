@@ -73,6 +73,20 @@ def test_cadastro_responde(client):
 
 
 @pytest.mark.django_db
+def test_paginas_institucionais_publicas_respondem(client):
+    paginas = [
+        ("sobre", "Sobre o projeto"),
+        ("privacidade", "Política de privacidade da demo"),
+        ("termos", "Termos de uso da demo"),
+    ]
+
+    for rota, texto in paginas:
+        response = client.get(reverse(rota))
+        assert response.status_code == 200
+        assert texto in response.content.decode()
+
+
+@pytest.mark.django_db
 def test_cadastro_cria_usuario_e_redireciona_para_onboarding(client, django_user_model):
     response = client.post(
         reverse("signup"),

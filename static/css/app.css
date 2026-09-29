@@ -55,6 +55,25 @@ a {
   padding: 40px 24px;
 }
 
+.site-footer {
+  align-items: center;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  margin: 20px auto 0;
+  max-width: 1120px;
+  padding: 24px;
+}
+
+.site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
 .hero,
 .panel,
 .card {
@@ -289,6 +308,27 @@ a {
   border-radius: 999px;
   font-weight: 800;
   padding: 10px 14px;
+}
+
+.legal-page {
+  line-height: 1.7;
+  max-width: 860px;
+}
+
+.legal-page h1 {
+  font-size: clamp(30px, 4vw, 48px);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin: 8px 0 18px;
+}
+
+.legal-page h2 {
+  margin-top: 28px;
+}
+
+.legal-page p,
+.legal-page li {
+  color: var(--muted);
 }
 
 .page-heading {

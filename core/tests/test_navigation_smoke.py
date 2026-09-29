@@ -18,6 +18,9 @@ def demo_client(client):
 def test_demo_usuario_abre_telas_principais_sem_erro(demo_client):
     rotas = [
         "dashboard",
+        "sobre",
+        "privacidade",
+        "termos",
         "empresa_list",
         "cliente_list",
         "cliente_import",

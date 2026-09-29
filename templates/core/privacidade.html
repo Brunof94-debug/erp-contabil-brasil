@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Privacidade — ERP Contábil Brasil{% endblock %}
+
+{% block content %}
+  <section class="panel legal-page">
+    <p class="eyebrow">Privacidade</p>
+    <h1>Política de privacidade da demo</h1>
+    <p>
+      Esta página descreve as práticas previstas para a versão demonstrativa do ERP
+      Contábil Brasil. Ela serve como base inicial de transparência, mas deve ser
+      revisada juridicamente antes de qualquer uso comercial real.
+    </p>
+
+    <h2>Dados tratados na aplicação</h2>
+    <p>
+      A aplicação pode armazenar dados de cadastro de usuários, empresas, clientes,
+      fornecedores, contas contábeis, lançamentos e títulos financeiros criados durante
+      o uso do sistema.
+    </p>
+
+    <h2>Finalidade</h2>
+    <p>
+      Os dados são usados para autenticação, organização operacional, exibição de
+      relatórios e demonstração das funcionalidades do MVP.
+    </p>
+
+    <h2>Segurança</h2>
+    <p>
+      O projeto foi estruturado para não versionar secrets, usar variáveis de ambiente,
+      isolar dados por empresa e manter testes automatizados sobre regras críticas.
+    </p>
+
+    <h2>Ambiente demo</h2>
+    <p>
+      Evite inserir dados reais sensíveis em ambientes de demonstração. Use dados
+      fictícios até que exista política final revisada e ambiente de produção aprovado.
+    </p>
+  </section>
+{% endblock %}
