@@ -14,13 +14,51 @@
   <section class="panel">
     <form method="post" class="form">
       {% csrf_token %}
-      {{ form.as_p }}
+      {% if form.non_field_errors %}
+        <div class="form-errors">{{ form.non_field_errors }}</div>
+      {% endif %}
+      <div class="form-grid">
+        {% for field in form %}
+          {% if field.is_hidden %}
+            {{ field }}
+          {% else %}
+            <div class="field-group{% if field.errors %} field-error{% endif %}">
+              {{ field.label_tag }}
+              {{ field }}
+              {% if field.help_text %}
+                <small>{{ field.help_text }}</small>
+              {% endif %}
+              {% for error in field.errors %}
+                <span class="error-text">{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
 
       <h2>Itens do lançamento</h2>
+      <p class="muted">Use pelo menos uma linha de débito e uma linha de crédito com o mesmo total.</p>
       {{ formset.management_form }}
       {% for item_form in formset %}
         <div class="inline-panel">
-          {{ item_form.as_p }}
+          {% if item_form.non_field_errors %}
+            <div class="form-errors">{{ item_form.non_field_errors }}</div>
+          {% endif %}
+          <div class="form-grid compact-grid">
+            {% for field in item_form %}
+              {% if field.is_hidden %}
+                {{ field }}
+              {% else %}
+                <div class="field-group{% if field.errors %} field-error{% endif %}">
+                  {{ field.label_tag }}
+                  {{ field }}
+                  {% for error in field.errors %}
+                    <span class="error-text">{{ error }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
         </div>
       {% endfor %}
 

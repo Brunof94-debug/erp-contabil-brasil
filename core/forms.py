@@ -15,7 +15,11 @@ from .models import (
 
 
 class CadastroUsuarioForm(UserCreationForm):
-    email = forms.EmailField(required=True, label="E-mail")
+    email = forms.EmailField(
+        required=True,
+        label="E-mail",
+        help_text="Use um e-mail válido para recuperação de acesso.",
+    )
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -42,6 +46,14 @@ class EmpresaForm(forms.ModelForm):
     class Meta:
         model = Empresa
         fields = ["nome", "documento", "ativa"]
+        labels = {
+            "nome": "Nome da empresa",
+            "documento": "CNPJ/CPF",
+            "ativa": "Empresa ativa",
+        }
+        help_texts = {
+            "documento": "Opcional no MVP. Use apenas se fizer sentido para a demonstração.",
+        }
 
 
 class OnboardingEmpresaForm(forms.ModelForm):
@@ -61,18 +73,43 @@ class ClienteForm(forms.ModelForm):
     class Meta:
         model = Cliente
         fields = ["empresa", "nome", "documento", "email", "telefone", "ativa"]
+        labels = {
+            "documento": "CPF/CNPJ",
+            "ativa": "Cliente ativo",
+        }
+        help_texts = {
+            "documento": "Opcional. Ajuda a diferenciar clientes com nomes parecidos.",
+            "email": "Opcional. Usado apenas para contato operacional.",
+        }
 
 
 class FornecedorForm(forms.ModelForm):
     class Meta:
         model = Fornecedor
         fields = ["empresa", "nome", "documento", "email", "telefone", "ativa"]
+        labels = {
+            "documento": "CPF/CNPJ",
+            "ativa": "Fornecedor ativo",
+        }
+        help_texts = {
+            "documento": "Opcional. Ajuda a organizar obrigações e pagamentos.",
+            "email": "Opcional. Usado apenas para contato operacional.",
+        }
 
 
 class ContaContabilForm(forms.ModelForm):
     class Meta:
         model = ContaContabil
         fields = ["empresa", "codigo", "nome", "tipo", "conta_pai", "ativa"]
+        labels = {
+            "codigo": "Código contábil",
+            "conta_pai": "Conta superior",
+            "ativa": "Conta ativa",
+        }
+        help_texts = {
+            "codigo": "Exemplo: 1.1.1 para caixa ou bancos.",
+            "conta_pai": "Opcional. Use para montar hierarquia do plano de contas.",
+        }
 
 
 class LancamentoContabilForm(forms.ModelForm):
@@ -81,6 +118,13 @@ class LancamentoContabilForm(forms.ModelForm):
         fields = ["empresa", "data", "historico", "status"]
         widgets = {
             "data": forms.DateInput(attrs={"type": "date"}),
+        }
+        labels = {
+            "historico": "Histórico",
+        }
+        help_texts = {
+            "historico": "Descreva o fato contábil com clareza.",
+            "status": "Rascunho permite revisar antes de considerar o lançamento postado.",
         }
 
 
@@ -102,6 +146,17 @@ class TituloFinanceiroForm(forms.ModelForm):
         widgets = {
             "vencimento": forms.DateInput(attrs={"type": "date"}),
             "data_pagamento": forms.DateInput(attrs={"type": "date"}),
+        }
+        labels = {
+            "descricao": "Descrição",
+            "data_pagamento": "Data de pagamento/recebimento",
+            "observacoes": "Observações",
+        }
+        help_texts = {
+            "valor": "Informe o valor positivo do título.",
+            "data_pagamento": "Preencha somente quando o status for pago/recebido.",
+            "cliente": "Use cliente em contas a receber.",
+            "fornecedor": "Use fornecedor em contas a pagar.",
         }
 
 
