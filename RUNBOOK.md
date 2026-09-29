@@ -10,9 +10,34 @@ pytest
 ruff check .
 ```
 
-## Deploy futuro
+## Deploy demo
 
-Antes de production:
+Arquivos de deploy preparados:
+
+- `Procfile` — coleta estáticos, aplica migrations e inicia Gunicorn.
+- `runtime.txt` — fixa Python 3.12.
+- `railway.json` — healthcheck em `/healthz/`.
+
+Variáveis mínimas para um ambiente demo:
+
+```text
+DJANGO_SECRET_KEY=<gerar valor seguro>
+DJANGO_DEBUG=False
+DJANGO_ALLOWED_HOSTS=<dominio-demo>
+CSRF_TRUSTED_ORIGINS=https://<dominio-demo>
+DATABASE_URL=<postgres-provider-url>
+DJANGO_SESSION_COOKIE_SECURE=True
+DJANGO_CSRF_COOKIE_SECURE=True
+```
+
+Após o primeiro deploy demo:
+
+```powershell
+python manage.py createsuperuser
+python manage.py seed_demo
+```
+
+Antes de production real:
 
 - validar variáveis de ambiente;
 - rodar migrations em staging;

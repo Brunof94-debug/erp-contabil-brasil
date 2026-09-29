@@ -118,6 +118,17 @@ EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
 Isso permite testar recuperação de senha localmente sem provedor externo. Em produção,
 configure SMTP ou provedor transacional por variáveis de ambiente, sem colocar secrets no Git.
 
+## Deploy demo
+
+O projeto já inclui configuração básica para deploy demo:
+
+- `Procfile` com `collectstatic`, `migrate` e Gunicorn;
+- `runtime.txt` com Python 3.12;
+- `railway.json` com healthcheck em `/healthz/`;
+- suporte a `DATABASE_URL`, `DJANGO_ALLOWED_HOSTS` e `CSRF_TRUSTED_ORIGINS`.
+
+Use o [RUNBOOK.md](RUNBOOK.md) para conferir variáveis mínimas e checks antes de publicar.
+
 ## Próximas fases
 
 1. Fechar requisitos do MVP comercial.
