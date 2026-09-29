@@ -67,7 +67,9 @@ usuário: demo
 senha: demo12345
 ```
 
-Esse usuário fica vinculado à `Empresa Demonstração`, permitindo testar o isolamento por empresa.
+Esse usuário fica vinculado à `Contábil Aurora Demo`, permitindo testar o isolamento por empresa.
+O seed inclui dados fictícios profissionais: clientes, fornecedores, plano de contas,
+lançamentos balanceados, contas a receber, contas a pagar e vencimentos variados.
 
 ## Primeiro acesso de novos usuários
 
