@@ -2,7 +2,7 @@
 
 Base inicial profissional para um sistema ERP contábil brasileiro, criada do zero para evoluir com segurança.
 
-Versão local atual: `v0.1.3-demo`.
+Versão local atual: `v0.1.4-demo`.
 
 ## Demonstração visual
 
@@ -27,12 +27,33 @@ Importante: este projeto ainda não declara conformidade fiscal, SPED, NF-e, eSo
 
 ## Como rodar localmente
 
+Clone o repositório e entre na pasta do projeto:
+
+```bash
+git clone https://github.com/Brunof94-debug/erp-contabil-brasil.git
+cd erp-contabil-brasil
+```
+
+No Windows PowerShell:
+
 ```powershell
-cd C:\Users\Pichau\Documents\Codex\erp-contabil-brasil
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements-dev.txt
 Copy-Item .env.example .env
+python manage.py migrate
+python manage.py seed_demo
+python manage.py createsuperuser
+python manage.py runserver
+```
+
+No macOS/Linux:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements-dev.txt
+cp .env.example .env
 python manage.py migrate
 python manage.py seed_demo
 python manage.py createsuperuser

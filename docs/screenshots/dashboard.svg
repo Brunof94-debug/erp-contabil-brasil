@@ -25,8 +25,9 @@
     <rect x="64" y="154" width="1152" height="530" rx="28" fill="#fff"/>
   </g>
   <text x="104" y="214" fill="#0f766e" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">MVP VALIDADO LOCALMENTE</text>
-  <text x="104" y="262" fill="#0f172a" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="40" font-weight="800">Controle financeiro, contábil e operacional em uma única base.</text>
-  <text x="104" y="302" fill="#475569" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">Multiempresa, plano de contas, lançamentos balanceados, contas a pagar/receber e relatórios gerenciais.</text>
+  <text x="104" y="254" fill="#0f172a" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="800">Controle financeiro, contábil e operacional</text>
+  <text x="104" y="294" fill="#0f172a" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="800">em uma única base.</text>
+  <text x="104" y="328" fill="#475569" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">Multiempresa, plano de contas, lançamentos balanceados e relatórios gerenciais.</text>
   <g font-family="Inter, Segoe UI, Arial, sans-serif">
     <g>
       <rect x="104" y="350" width="160" height="96" rx="18" fill="#ecfeff"/>

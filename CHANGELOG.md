@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.1.4-demo — Polimento de README para portfólio
+
+Versão focada em melhorar a apresentação pública do projeto no GitHub.
+
+### Corrigido
+
+- Ajustada a imagem principal do dashboard para evitar texto estourando a área visível.
+- Removido caminho local de máquina pessoal das instruções de instalação.
+- Instruções separadas para Windows PowerShell e macOS/Linux.
+
+### Validações locais
+
+- SVG principal validado como XML válido.
+- Varredura do repositório sem caminhos locais pessoais no conteúdo versionado.
+
 ## v0.1.3-demo — Apresentação visual para portfólio
 
 Versão focada em deixar o repositório mais forte para currículo/GitHub.
