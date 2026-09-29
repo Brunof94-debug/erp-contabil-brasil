@@ -1,20 +1,27 @@
 # Roadmap
 
-## v0.1 — Fundação
+## v0.1 — Fundação demonstrável
 
 - Projeto Django criado.
 - Modelos centrais.
 - Admin funcional.
 - Validação contábil de partidas dobradas.
-- Dashboard básico.
-- Testes dos lançamentos.
+- Dashboard visual.
+- Login, cadastro e recuperação de senha.
+- Isolamento por empresa.
+- Financeiro básico.
+- Importação/exportação CSV.
+- Seed demo profissional.
+- Configuração de deploy demo.
+- Testes automatizados.
 
 ## v0.2 — Operação
 
-- Telas CRUD.
-- Login e permissões por empresa.
-- Relatórios simples.
-- Importação CSV.
+- Usuários por empresa com papéis.
+- Filtros avançados.
+- Balancete inicial.
+- Melhorias de auditoria.
+- Deploy demo online.
 
 ## v0.3 — Comercial
 
@@ -22,6 +29,7 @@
 - Planos.
 - Checkout.
 - Onboarding.
+- Trial/demo pública.
 
 ## v0.4 — Contábil avançado
 

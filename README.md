@@ -2,6 +2,8 @@
 
 Base inicial profissional para um sistema ERP contábil brasileiro, criada do zero para evoluir com segurança.
 
+Versão local atual: `v0.1.0-demo`.
+
 ## Escopo inicial do MVP
 
 - Cadastro de empresas.
@@ -128,6 +130,15 @@ O projeto já inclui configuração básica para deploy demo:
 - suporte a `DATABASE_URL`, `DJANGO_ALLOWED_HOSTS` e `CSRF_TRUSTED_ORIGINS`.
 
 Use o [RUNBOOK.md](RUNBOOK.md) para conferir variáveis mínimas e checks antes de publicar.
+
+## Documentação do projeto
+
+- [PRODUCT_SPEC.md](PRODUCT_SPEC.md) — especificação inicial.
+- [ROADMAP.md](ROADMAP.md) — evolução planejada.
+- [RUNBOOK.md](RUNBOOK.md) — operação e deploy demo.
+- [SECURITY.md](SECURITY.md) — princípios de segurança.
+- [CHANGELOG.md](CHANGELOG.md) — histórico de versões.
+- [PORTFOLIO.md](PORTFOLIO.md) — resumo profissional para currículo/GitHub.
 
 ## Próximas fases
 
